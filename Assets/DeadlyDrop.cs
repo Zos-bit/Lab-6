@@ -17,7 +17,7 @@ public class DeadlyDrop : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other){
         if(other.tag=="Player")
-            FindObjectOfType<LevelManager>().RespawnPlayer();
+            FindAnyObjectByType<LevelManager>().RespawnPlayer();
         
     }
 }

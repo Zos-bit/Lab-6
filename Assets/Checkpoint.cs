@@ -17,7 +17,7 @@ public class Checkpoint : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other){
         if(other.tag=="Player")
-            FindObjectOfType<LevelManager>().CurrentCheckpoint=this.gameObject;
+            FindAnyObjectByType<LevelManager>().CurrentCheckpoint=this.gameObject;
         
     }
 }

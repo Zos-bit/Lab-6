@@ -29,13 +29,13 @@ public class PlayerController : MonoBehaviour
             Jump();
         }
         if(Input.GetKey(L)){
-            GetComponent<Rigidbody2D>().velocity=new Vector2(-moveSpeed,GetComponent<Rigidbody2D>().velocity.y);
+            GetComponent<Rigidbody2D>().linearVelocity=new Vector2(-moveSpeed,GetComponent<Rigidbody2D>().linearVelocity.y);
             if(GetComponent<SpriteRenderer>()!=null){
                 GetComponent<SpriteRenderer>().flipX=true;
             }
         }
         if(Input.GetKey(R)){
-            GetComponent<Rigidbody2D>().velocity=new Vector2(moveSpeed,GetComponent<Rigidbody2D>().velocity.y);
+            GetComponent<Rigidbody2D>().linearVelocity=new Vector2(moveSpeed,GetComponent<Rigidbody2D>().linearVelocity.y);
             if(GetComponent<SpriteRenderer>()!=null){
                 GetComponent<SpriteRenderer>().flipX=false;
             }
@@ -46,13 +46,13 @@ public class PlayerController : MonoBehaviour
     }
     void FixedUpdate(){
         grounded=Physics2D.OverlapCircle(groundCheck.position,groundCheckRadius,whatIsGround);
-        anim.SetFloat("Speed",Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
-        anim.SetFloat("Height", GetComponent<Rigidbody2D>().velocity.y);
+        anim.SetFloat("Speed",Mathf.Abs(GetComponent<Rigidbody2D>().linearVelocity.x));
+        anim.SetFloat("Height", GetComponent<Rigidbody2D>().linearVelocity.y);
         anim.SetBool("Grounded", grounded);
 
     }
     void Jump(){
-        GetComponent<Rigidbody2D>().velocity=new Vector2(GetComponent<Rigidbody2D>().velocity.x,jumpHeight);
+        GetComponent<Rigidbody2D>().linearVelocity=new Vector2(GetComponent<Rigidbody2D>().linearVelocity.x,jumpHeight);
 
     }
 }
